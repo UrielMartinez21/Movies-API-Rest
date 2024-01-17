@@ -15,6 +15,11 @@ def inicio():
 
 @app.route('/api/peliculas', methods=['GET'])
 def listar_peliculas():
+    """
+    Listar todas las peliculas
+    :return: listado de peliculas
+    """
+
     try:
         with CursorDelPool() as cursor:
             cursor.execute(query['SELECCIONAR'])
@@ -35,6 +40,12 @@ def listar_peliculas():
 
 @app.route('/api/peliculas/<int:id>', methods=['GET'])
 def obtener_pelicula(id):
+    """
+    Obtener una pelicula por id
+    :param id: id de la pelicula
+    :return: pelicula
+    """
+
     try:
         with CursorDelPool() as cursor:
             cursor.execute(query['SELECCIONAR_ID'], (id,))
@@ -54,6 +65,11 @@ def obtener_pelicula(id):
 
 @app.route('/api/peliculas', methods=['POST'])
 def crear_pelicula():
+    """
+    Crear una pelicula
+    :return: pelicula creada
+    """
+
     try:
         with CursorDelPool() as cursor:
             movie = Movie()
@@ -68,6 +84,12 @@ def crear_pelicula():
 
 @app.route('/api/peliculas/<int:id>', methods=['PUT'])
 def actualizar_pelicula(id):
+    """
+    Actualizar una pelicula
+    :param id: id de la pelicula
+    :return: pelicula actualizada
+    """
+
     try:
         with CursorDelPool() as cursor:
             movie = Movie()
@@ -82,6 +104,12 @@ def actualizar_pelicula(id):
 
 @app.route('/api/peliculas/<int:id>', methods=['DELETE'])
 def eliminar_pelicula(id):
+    """
+    Eliminar una pelicula
+    :param id: id de la pelicula
+    :return: pelicula eliminada
+    """
+
     try:
         with CursorDelPool() as cursor:
             cursor.execute(query['ELIMINAR'], (id,))
