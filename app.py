@@ -2,10 +2,10 @@ from flask import Flask, request
 from src.config.conexion import CursorDelPool
 from src.querys.querys import query
 from src.model.movie import Movie
-
+from flask_cors import CORS
 
 app = Flask(__name__)
-
+CORS(app)
 
 # --------------------------| Rutas |--------------------------
 @app.route('/')
